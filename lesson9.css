@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+  padding: 20px;
+}
+button {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 10px;
+  cursor: pointer;
+  
+}
+input {
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+#lst {
+  width: 375px;
+}
