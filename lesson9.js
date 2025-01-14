@@ -4,6 +4,10 @@ const HtmlElement = function (type, textContentt) {
   this.id = identity;
   this.textContentt = textContentt;
   identity += 1;
+
+  if (new.target) {
+    throw new Error("this is abstruct class");
+  }
 };
 HtmlElement.prototype.render = function () {
   const doc = document.createElement(this.type);
@@ -40,17 +44,32 @@ SelectElement.prototype = Object.create(HtmlElement.prototype);
 function createElements() {
   const caption = document.getElementById("caption1").value;
   const elementType = document.getElementById("element-type").value;
-  const element = new HtmlElement(elementType, caption);
-  element.render();
+
+  try {
+    const element = new HtmlElement(elementType, caption);
+    element.render();
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 function createPicture() {
   const alt = document.getElementById("alt").value;
   const src = document.getElementById("src").value;
-  const pic = new ImageElement(src, alt);
-  pic.render();
+
+  try {
+    const pic = new ImageElement(src, alt);
+    pic.render();
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 function createSelect() {
   const lst = document.getElementById("lst").value.split(",");
-  const sel = new SelectElement(lst);
-  sel.render();
+
+  try {
+    const sel = new SelectElement(lst);
+    sel.render();
+  } catch (error) {
+    console.log(error.message);
+  }
 }
